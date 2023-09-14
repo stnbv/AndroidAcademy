@@ -1,0 +1,31 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+}
+
+apply from: "${rootProject.projectDir}/base.gradle"
+
+android {
+    namespace 'com.example.androidacademy'
+
+    buildToolsVersion '32.0.0'
+
+    defaultConfig {
+        applicationId "com.example.androidacademy"
+        versionCode 1
+        versionName "1"
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "androidacademy${defaultConfig.versionCode}-v${defaultConfig.versionName}.${variant.buildType.name}.apk"
+        }
+    }
+}
+
+dependencies {
+    implementation project(':profile')
+}
+
+
